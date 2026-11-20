@@ -22,6 +22,26 @@ npm run preview
 
 The deployable site is in `dist/`. You can deploy it to Vercel, Netlify, or any static host.
 
+## Deploy to Vercel
+
+This project is ready for Vercel with no extra setup. `vercel.json` sets the Vite framework preset, the build command, the `dist/` output, single-page rewrites, and long-term caching for hashed assets.
+
+Option A — from the Vercel dashboard:
+
+1. Push this repository to GitHub (already done for `jishnusjv85-design/heera_world`).
+2. In Vercel, choose **Add New → Project** and import the repository.
+3. Vercel detects Vite automatically. Leave the defaults and press **Deploy**.
+
+Option B — from the terminal, with the Vercel CLI:
+
+```bash
+npm i -g vercel
+vercel        # preview deployment
+vercel --prod # production deployment
+```
+
+Node.js 20 or newer is required (set in `package.json` under `engines`).
+
 ## Customize
 
 - `src/App.jsx`: page text, sections, navigation, and image URLs.
