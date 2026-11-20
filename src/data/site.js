@@ -289,3 +289,17 @@ export const DONATIONS = {
     { label: 'Number of Members', value: '0' },
   ],
 }
+
+export const MANAGING_DIRECTOR = {
+  welcome: 'Welcome to Heera World Foundation!',
+  title: 'Message from the Managing Director',
+  image: MANAGEMENT[0].image,
+  name: MANAGEMENT[0].name,
+  role: MANAGEMENT[0].role,
+  paragraphs: [
+    'Heera World Foundation was founded on a simple belief — that every individual deserves to live with dignity, opportunity, and hope. Through Motherhood Home (Amma Veedu) at Ulliyeri, we provide a safe and caring home for elderly mothers who have no one to depend on, offering free accommodation, nutritious food, clothing, medical care, and daily support.',
+    'Our vision reaches further. We are working to build a comprehensive Senior Care Centre and to strengthen welfare for senior citizens across all 14 districts of Kerala. Every programme we run is guided by compassion, care, and protection — placing people before everything.',
+    'This work is only possible because of our volunteers, donors, and well-wishers. To every hand that has helped us, thank you. Together, we can bring comfort to more lives and build a more humane and equitable Kerala for all beings.',
+  ],
+}
+

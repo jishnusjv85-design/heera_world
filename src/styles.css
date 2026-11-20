@@ -73,7 +73,7 @@ ul{margin:0;padding:0;list-style:none}
 .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
 .hero-image.show{opacity:1}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,30,21,.94) 0%,rgba(15,38,26,.6) 52%,rgba(15,38,26,.38) 100%)}
-.hero-content{position:relative;z-index:2;padding:0 0 110px}
+.hero-content{position:relative;z-index:2;padding:0 0 110px;transform:translateX(calc(-1 * clamp(0px, (100vw - 1360px) / 2, 96px)))}
 .hero-eyebrow{color:var(--gold-soft)}
 .hero h1{color:#fff;font-size:clamp(38px,6vw,76px);margin-bottom:22px}
 .hero p{color:rgba(255,255,255,.86);max-width:560px;font-size:17px}
@@ -186,7 +186,22 @@ ul{margin:0;padding:0;list-style:none}
 .image-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:50px}
 .image-strip img{width:100%;height:170px;object-fit:cover}
 
-/* ---------- team ---------- */
+/* ---------- team / management ---------- */
+.team-hero{background:var(--green-800);color:#fff;padding:64px 0}
+.team-hero-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.team-hero h1{color:#fff;font-size:clamp(30px,4vw,52px)}
+.crumbs{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.7)}
+.crumbs a{transition:color .2s}
+.crumbs a:hover{color:var(--gold)}
+.crumbs span:first-of-type{color:rgba(255,255,255,.35)}
+.md-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.panel-title{display:flex;align-items:center;gap:20px;font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,28px);color:var(--green-800);margin:0 0 30px;font-weight:500}
+.panel-title::after{content:'';flex:1;height:1px;background:var(--line);min-width:40px}
+.md-photo img{width:100%;max-width:340px;box-shadow:0 30px 60px -40px rgba(24,58,42,.6)}
+.md-right p{line-height:1.85;color:var(--muted)}
+.md-sign{margin-top:26px;display:flex;flex-direction:column;gap:5px}
+.md-sign strong{color:var(--green-800);font-size:16px;letter-spacing:.02em}
+.md-sign span{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--gold)}
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
 .team-card{text-align:center}
 .team-photo{overflow:hidden;background:var(--cream-2);aspect-ratio:3/4}
@@ -292,7 +307,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--green-600)}
   .nav-links a.active::after{display:none}
   .mobile-donate{display:inline-flex !important;align-items:center;gap:8px;background:var(--green-700);color:#fff !important;justify-content:center;margin-top:14px;padding:14px}
   .section-pad{padding:70px 0}
-  .intro-grid,.story-grid,.mission-grid,.future-grid,.longterm-grid,.impact-grid,.cta-inner,.contact-grid,.contact-bottom,.bank-grid,.company-grid{grid-template-columns:1fr;gap:34px}
+  .intro-grid,.story-grid,.mission-grid,.future-grid,.longterm-grid,.impact-grid,.cta-inner,.contact-grid,.contact-bottom,.bank-grid,.company-grid,.md-grid{grid-template-columns:1fr;gap:34px}
   .section-heading{grid-template-columns:1fr;gap:18px}
   .card-grid-3,.pillar-grid{grid-template-columns:1fr}
   .impact-list{grid-template-columns:1fr}
