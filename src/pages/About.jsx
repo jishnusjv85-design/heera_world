@@ -2,6 +2,7 @@ import React from 'react'
 import { Check, Quote } from 'lucide-react'
 import { Link } from '../router.jsx'
 import { Marquee } from '../components/Layout.jsx'
+import Counter from '../components/Counter.jsx'
 import { ABOUT, DISTRICTS } from '../data/site.js'
 
 export default function About() {
@@ -27,7 +28,7 @@ export default function About() {
             <div className="stat-row">
               {ABOUT.story.stats.map((s) => (
                 <div className="stat" key={s.label}>
-                  <span className="stat-value">{s.value}</span>
+                  <Counter className="stat-value" value={s.value} />
                   <span className="stat-label">{s.label}</span>
                 </div>
               ))}

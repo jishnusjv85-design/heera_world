@@ -331,3 +331,51 @@ input:focus,textarea:focus{outline:none;border-color:var(--green-600)}
   .footer-grid{grid-template-columns:1fr 1fr}
   .footer-brand-col,.footer-contact{grid-column:1/-1}
 }
+
+/* ---------- motion: hero intro, scroll reveals, parallax, hover ---------- */
+@keyframes hf-hero-in{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes hf-reveal-up{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes hf-reveal-zoom{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:none}}
+@keyframes hf-parallax{from{transform:translateY(0) scale(1.06)}to{transform:translateY(9%) scale(1.14)}}
+
+@media (prefers-reduced-motion:no-preference){
+  .hero .hero-eyebrow,.hero .hero-content h1,.hero .hero-content p,.hero .hero-actions{animation:hf-hero-in .95s cubic-bezier(.2,.7,.2,1) both}
+  .hero .hero-eyebrow{animation-delay:.12s}
+  .hero .hero-content h1{animation-delay:.26s}
+  .hero .hero-content p{animation-delay:.42s}
+  .hero .hero-actions{animation-delay:.56s}
+}
+
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .section-heading,.info-card,.focus-card,.pillar-card,.team-card,.news-card,.md-photo,.md-right,.bank-card,.company-intro,.company-table-wrap,.contact-card,.contact-form-wrap,.volunteer-box,.story-grid>*,.future-grid>*,.longterm-grid>*,.impact-grid>*,.cta-inner>*,.quote-inner,.panel-title,.intro-right,.mission-visual,.bank-visual{
+      animation:hf-reveal-up linear both;
+      animation-timeline:view();
+      animation-range:entry 5% entry 42%;
+    }
+    .image-strip img,.gallery-item,.team-photo,.news-photo{
+      animation:hf-reveal-zoom linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 38%;
+    }
+    .district,.stat,.priority{
+      animation:hf-reveal-up linear both;
+      animation-timeline:view();
+      animation-range:entry 12% entry 55%;
+    }
+  }
+}
+
+@supports (animation-timeline:scroll()){
+  @media (prefers-reduced-motion:no-preference){
+    .hero-image{animation:hf-parallax linear both;animation-timeline:scroll(root);animation-range:0 85vh}
+  }
+}
+
+@media (prefers-reduced-motion:no-preference){
+  .mission-visual img,.bank-visual img,.md-photo img,.news-photo img,.gallery-item img,.team-photo img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .mission-visual:hover img,.bank-visual:hover img,.md-photo:hover img{transform:scale(1.035)}
+  .news-card:hover .news-photo img{transform:scale(1.06)}
+  .text-link{transition:gap .25s,color .25s}
+  .text-link:hover{gap:13px}
+}

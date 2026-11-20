@@ -2,6 +2,7 @@ import React from 'react'
 import { ArrowUpRight, ArrowRight, Heart, Check, ChevronDown } from 'lucide-react'
 import { Link } from '../router.jsx'
 import { Marquee } from '../components/Layout.jsx'
+import Counter from '../components/Counter.jsx'
 import { HOME, DISTRICTS, HERO_IMAGE } from '../data/site.js'
 
 function Hero() {
@@ -130,7 +131,7 @@ export default function Home() {
       <section className="section-pad impact-band">
         <div className="container impact-grid">
           <div className="impact-stat">
-            <span className="big">{impact.stat}</span>
+            <Counter className="big" value={impact.stat} />
             <span className="small">{impact.statLabel}</span>
           </div>
           <div className="impact-copy">
