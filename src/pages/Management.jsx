@@ -10,7 +10,7 @@ export default function Management() {
         <div className="container team-hero-inner">
           <h1>Meet The Team</h1>
           <nav className="crumbs">
-            <Link to="/">Home</Link><span>|</span><span>Management</span>
+            <Link to="/">Home</Link><span>|</span><span>Meet The Team</span>
           </nav>
         </div>
       </section>

@@ -3,7 +3,7 @@ const m = (name) => `/media/${name}`
 export const NAV = [
   { label: 'Home', to: '/' },
   { label: 'About Us', to: '/about-us' },
-  { label: 'Management', to: '/management' },
+  { label: 'Meet The Team', to: '/management' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Ammaveedu', to: '/ammaveedu' },
   { label: 'Contact Us', to: '/contact-us' },
@@ -195,7 +195,7 @@ export const ABOUT = {
 }
 
 export const MANAGEMENT = [
-  { name: 'MOHAMED FASAL AMBALI', role: 'MANAGING DIRECTOR', image: m('Untitled-design-65.webp') },
+  { name: 'MOHAMED FASAL AMBALI', role: 'MANAGING DIRECTOR', image: m('managing-director.jpg') },
   { name: 'SHARMIDAS THIRUMANGALATH', role: 'DIRECTOR', image: m('Untitled-design-66.webp') },
   { name: 'MOHAMMED ISSUDHEEN VAKKAYIL', role: 'WORKING CHAIRMAN', image: m('Untitled-design-63.webp') },
   { name: 'VALAPPIL RAJESH KUMAR', role: 'DIRECTOR', image: m('text.webp') },
