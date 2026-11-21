@@ -1,178 +1,104 @@
 import React from 'react'
-import { ArrowUpRight, ArrowRight, Heart, Check, ChevronDown } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Heart, CheckCircle2 } from 'lucide-react'
 import { Link } from '../router.jsx'
-import { Marquee } from '../components/Layout.jsx'
-import { HOME, DISTRICTS, HERO_IMAGE } from '../data/site.js'
-
-function Hero() {
-  return (
-    <section className="hero">
-      <img className="hero-image show" src={HERO_IMAGE} alt="Children gathered outdoors in a community setting" />
-      <div className="hero-overlay" />
-      <div className="hero-content container">
-        <div className="eyebrow hero-eyebrow"><span className="eyebrow-line" /> ROOTED IN COMPASSION. DRIVEN BY PURPOSE.</div>
-        <h1>A better tomorrow<br />begins <em>together.</em></h1>
-        <p>We believe meaningful change starts with people — their potential, their communities, and the opportunities we create together.</p>
-        <div className="hero-actions">
-          <Link className="btn btn-cream" to="/about-us">Discover Our Mission <ArrowUpRight size={18} /></Link>
-          <Link className="text-link light-link" to="/about-us">Explore our work <ArrowRight size={17} /></Link>
-        </div>
-      </div>
-      <div className="hero-side-note">HEERA WORLD FOUNDATION <span>—</span> HUMANITY FIRST</div>
-      <Link to="/about-us" className="scroll-cue">SCROLL TO EXPLORE <ChevronDown size={16} /></Link>
-    </section>
-  )
-}
+import { HOME, AMMAVEEDU } from '../data/site.js'
 
 export default function Home() {
-  const { whoWeAre, focus, mission, futureVision, longTerm, impact, coverage, join } = HOME
+  const areas = HOME.focus.items.slice(0, 4)
   return (
     <>
-      <Hero />
-      <Marquee />
-
-      <section className="section-pad">
-        <div className="container intro-grid">
-          <div className="intro-left">
-            <div className="eyebrow"><span className="eyebrow-line" /> {whoWeAre.eyebrow}</div>
-          </div>
-          <div className="intro-right">
-            <h2>{whoWeAre.title[0]} <em>{whoWeAre.title[1]}</em></h2>
-            <p className="lead">{whoWeAre.text}</p>
+      <section className="hero hero-editorial">
+        <img className="hero-image show" src={AMMAVEEDU.heroImage} alt="Ammaveedu — Motherhood Home community" fetchPriority="high" />
+        <div className="hero-overlay" />
+        <div className="hero-content container">
+          <div className="eyebrow hero-eyebrow"><span className="eyebrow-line" /> HEERA WORLD FOUNDATION · KERALA</div>
+          <h1>Everyone deserves<br /><em>care and dignity.</em></h1>
+          <p>Through Motherhood Home and community-led welfare initiatives, we work to make older people feel safe, seen and supported.</p>
+          <div className="hero-actions">
+            <Link className="btn btn-cream" to="/ammaveedu">Discover Ammaveedu <ArrowUpRight size={18} /></Link>
+            <Link className="text-link light-link" to="/donations">Support our work <ArrowRight size={17} /></Link>
           </div>
         </div>
-        <div className="container card-grid-3">
-          {whoWeAre.cards.map((c) => (
-            <article className="info-card" key={c.title}>
-              <h3>{c.title}</h3>
-              <p>{c.text}</p>
-            </article>
-          ))}
+        <div className="hero-side-note">HEERA WORLD FOUNDATION <span>—</span> HUMANITY FIRST</div>
+      </section>
+
+      <section className="section-pad intro-section">
+        <div className="container intro-grid">
+          <div className="eyebrow"><span className="eyebrow-line" /> WHO WE ARE</div>
+          <div className="intro-right">
+            <h2>Built around the simple belief that <em>care matters.</em></h2>
+            <p className="lead">{HOME.whoWeAre.text}</p>
+            <Link to="/about-us" className="text-link">Read our story <ArrowUpRight size={17} /></Link>
+          </div>
         </div>
       </section>
 
-      <section className="section-pad work">
+      <section className="section-pad spotlight-section">
+        <div className="container spotlight-grid">
+          <div className="spotlight-photo">
+            <img src={HOME.mission.image} alt="A moment from Motherhood Home" loading="lazy" />
+            <span className="photo-caption">MOTHERHOOD HOME · ULLIYERI, KERALA</span>
+          </div>
+          <div className="spotlight-content">
+            <div className="eyebrow"><span className="eyebrow-line" /> OUR SIGNATURE INITIATIVE</div>
+            <h2>A home that offers more than shelter.</h2>
+            <p className="lead">{HOME.mission.lead}</p>
+            <p>{AMMAVEEDU.paragraphs[0]}</p>
+            <ul className="check-list">
+              {HOME.mission.points.slice(0, 3).map(point => <li key={point}><CheckCircle2 size={17} /> {point}</li>)}
+            </ul>
+            <Link className="btn btn-green" to="/ammaveedu">Explore Motherhood Home <ArrowUpRight size={16} /></Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad practice-section">
         <div className="container">
           <div className="section-heading">
             <div>
-              <div className="eyebrow"><span className="eyebrow-line" /> {focus.eyebrow}</div>
-              <h2>{focus.title}</h2>
+              <div className="eyebrow"><span className="eyebrow-line" /> AREAS OF FOCUS</div>
+              <h2>Practical support, <em>human connection.</em></h2>
             </div>
-            <p>{focus.text}</p>
+            <p>Our priorities centre on the needs of older people and the communities around them.</p>
           </div>
-          <div className="focus-grid">
-            {focus.items.map((it) => (
-              <article className="focus-card" key={it.num}>
-                <span className="focus-num">{it.num}</span>
-                <h3>{it.title}</h3>
-                <p>{it.text}</p>
+          <div className="practice-grid">
+            {areas.map((area, i) => (
+              <article className="practice-item" key={area.num}>
+                <span className="practice-index">0{i + 1}</span>
+                <h3>{area.title}</h3>
+                <p>{area.text}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-pad mission-band">
-        <div className="container mission-grid">
-          <div className="mission-copy">
-            <div className="eyebrow"><span className="eyebrow-line" /> {mission.eyebrow}</div>
-            <h2>{mission.title}</h2>
-            <p className="lead">{mission.lead}</p>
-            <h3 className="mission-sub">{mission.subtitle}</h3>
-            {mission.paragraphs.map((p) => <p key={p}>{p}</p>)}
-            <ul className="check-list">
-              {mission.points.map((p) => <li key={p}><Check size={16} /> {p}</li>)}
-            </ul>
-          </div>
-          <div className="mission-visual">
-            <img src={mission.image} alt="Motherhood Home" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad future-band">
-        <div className="container future-grid">
+      <section className="section-pad vision-section">
+        <div className="container vision-content">
           <div>
-            <div className="eyebrow eyebrow-light"><span className="eyebrow-line" /> {futureVision.eyebrow}</div>
-            <h2>{futureVision.title}</h2>
-            <p>{futureVision.text}</p>
+            <div className="eyebrow"><span className="eyebrow-line" /> WHAT COMES NEXT</div>
+            <h2>{HOME.futureVision.title}</h2>
           </div>
-          <div className="future-visual" aria-hidden="true">
-            <span className="ring r1" /><span className="ring r2" /><span className="ring r3" />
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad">
-        <div className="container longterm-grid">
-          <div className="longterm-intro">
-            <div className="eyebrow"><span className="eyebrow-line" /> {longTerm.eyebrow}</div>
-            <h2>{longTerm.title}</h2>
-            <p>{longTerm.text}</p>
-            <div className="kicker">{longTerm.kicker}</div>
-          </div>
-          <div className="priority-block">
-            <h3>{longTerm.prioritiesTitle}</h3>
-            <div className="priority-grid">
-              {longTerm.priorities.map((p) => (
-                <div className="priority" key={p.num}>
-                  <span>{p.num}</span>
-                  <h4>{p.title}</h4>
-                  <p>{p.text}</p>
-                </div>
-              ))}
-            </div>
-            <p className="closing">{longTerm.closing}</p>
+          <div>
+            <p className="lead">{HOME.futureVision.text}</p>
+            <p>{HOME.longTerm.closing}</p>
+            <Link className="text-link" to="/contact-us">Talk to us about partnering <ArrowUpRight size={17} /></Link>
           </div>
         </div>
       </section>
 
-      <section className="section-pad impact-band">
-        <div className="container impact-grid">
-          <div className="impact-stat">
-            <span className="big">{impact.stat}</span>
-            <span className="small">{impact.statLabel}</span>
-          </div>
-          <div className="impact-copy">
-            <div className="eyebrow"><span className="eyebrow-line" /> {impact.eyebrow}</div>
-            <h2>{impact.title[0]} <em>{impact.title[1]}</em></h2>
-            <p className="lead">{impact.text}</p>
-            <ul className="impact-list">
-              {impact.items.map((t) => <li key={t}><Check size={16} /> {t}</li>)}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad coverage">
-        <div className="container">
-          <div className="section-heading center">
-            <div>
-              <div className="eyebrow"><span className="eyebrow-line" /> {coverage.eyebrow}</div>
-              <h2>{coverage.title[0]} <em>{coverage.title[1]}</em></h2>
-            </div>
-            <p>{coverage.text}</p>
-          </div>
-          <div className="district-grid">
-            {DISTRICTS.map((d) => <span key={d} className="district">{d}</span>)}
-          </div>
-        </div>
-      </section>
-
-      <section className="cta-section">
+      <section className="cta-section home-cta">
         <div className="container cta-inner">
           <div>
-            <div className="eyebrow eyebrow-light"><span className="eyebrow-line" /> {join.eyebrow}</div>
-            <h2>{join.title[0]}<br /><em>{join.title[1]}</em></h2>
-            <p>{join.text}</p>
+            <div className="eyebrow eyebrow-light"><span className="eyebrow-line" /> BE PART OF THE WORK</div>
+            <h2>Care grows when<br /><em>people come together.</em></h2>
+            <p>Support Motherhood Home through a contribution, volunteering, or an organizational partnership.</p>
             <div className="hero-actions">
-              <Link className="btn btn-cream" to="/donations">Donate Now <Heart size={17} /></Link>
-              <Link className="text-link light-link" to="/contact-us">Volunteer With Us <ArrowUpRight size={16} /></Link>
+              <Link className="btn btn-cream" to="/donations">Support our work <Heart size={17} /></Link>
+              <Link className="text-link light-link" to="/contact-us">Get in touch <ArrowUpRight size={16} /></Link>
             </div>
           </div>
-          <div className="cta-decoration" aria-hidden="true">
-            <span className="ring r1" /><span className="ring r2" /><span className="ring r3" /><span className="ring r4" />
-          </div>
+          <img className="cta-photo" src={AMMAVEEDU.extraImages[0]} alt="Community moments at Ammaveedu" loading="lazy" />
         </div>
       </section>
     </>
