@@ -1,72 +1,41 @@
-# Heera World Foundation — Website (React + Vite)
+# Heera World Foundation website
 
-A responsive, multi-page website for Heera World Foundation, built with React, Vite and plain CSS. The content is taken from the foundation's live site (heeraworldfoundation.com) and rebuilt here.
+React + Vite website with a more focused, editorial presentation of the foundation and its Motherhood Home (Ammaveedu) initiative.
 
-## Pages
+## Development
+Requires Node.js 20 or later.
 
-- **Home** (`/`) — hero slideshow, focus areas, mission (Motherhood Home), future vision, development priorities, impact, coverage and join-the-mission.
-- **About Us** (`/about-us`) — our story, core pillars, operational sectors, achievements, reach and motto.
-- **Management** (`/management`) — foundation leadership.
-- **Gallery** (`/gallery`) — photo gallery with lightbox.
-- **Ammaveedu** (`/ammaveedu`) — Mother Hood Home, news & updates.
-- **Contact Us** (`/contact-us`) — contact details and enquiry form.
-- **Donations** (`/donations`) — bank details and company information.
-
-Routing is a small custom path-based router (`src/router.jsx`); the site is a single-page app, so any deep link is served from `index.html`.
-
-## Start locally
-
-Requires Node.js 20+.
-
-```bash
+```sh
 npm install
+npm run build
 npm run dev
 ```
 
-Open the local URL shown in the terminal (typically http://localhost:5173).
+## Pages
+Home, About, Management, Gallery, Ammaveedu, Contact, and Donations. Site content is maintained in `src/data/site.js`; real images are in `public/media/`.
 
-## Production build
+## Contact form setup (required)
+The form submits to `/api/contact`, a Vercel serverless function that sends messages through Resend. Configure these **server-side environment variables** in Vercel:
 
-```bash
-npm run build
-npm run preview
-```
+- `RESEND_API_KEY`: your Resend API key
+- `CONTACT_FROM_EMAIL`: sender address on a domain verified in Resend
+- `CONTACT_TO_EMAIL`: the foundation's verified receiving address
 
-The deployable site is in `dist/`.
+Until configured, the form shows a clear error rather than claiming to have delivered a message. **Do not commit credentials.** The form requires server-side rate limiting / abuse monitoring for high-traffic production use. Confirm email deliverability and test a real enquiry after deployment.
 
-## Deploy to Vercel
+## Donation details
+The website displays the bank information already in the repository; no payment gateway is integrated. Confirm the account and tax documentation directly with the foundation before publishing.
 
-This project is ready for Vercel with no extra setup. `vercel.json` sets the Vite framework preset, the build command, the `dist/` output, single-page rewrites, and long-term caching for hashed assets.
+## Editorial verification
+The previous content contained broad statewide impact and numerical claims that were not supported by documentation in the repository. The new Home and About pages do not present those claims as verified. Review the remaining original source data, registration information, photo consent/rights, social links, and Malayalam news captions before production use.
 
-Option A — from the Vercel dashboard:
+## Deployment
+Vercel: import the GitHub repository, use the Vite preset, set the three environment variables above, and deploy. `vercel.json` preserves SPA navigation while routing `/api/*` to serverless functions.
 
-1. Push this repository to GitHub (`jishnusjv85-design/heera_world`).
-2. In Vercel, choose **Add New → Project** and import the repository.
-3. Vercel detects Vite automatically. Leave the defaults and press **Deploy**.
-
-Option B — from the terminal, with the Vercel CLI:
-
-```bash
-npm i -g vercel
-vercel        # preview deployment
-vercel --prod # production deployment
-```
-
-## Project structure
-
-- `src/App.jsx` — routes and layout.
-- `src/router.jsx` — small path-based router.
-- `src/components/Layout.jsx` — header, footer and sector marquee.
-- `src/pages/*.jsx` — one file per page.
-- `src/data/site.js` — all page content (text, lists, image references).
-- `src/styles.css` — layout, colors, type and responsive styling.
-- `public/media/` — images used across the site.
-- `src/assets/logo-mark.webp` — logo in the header and footer.
-- `index.html` — page title and SEO description.
-
-## Before publishing
-
-- **Connect the enquiry form to a real backend/form service.** It currently shows a demo acknowledgement and does not send messages or collect data.
-- Confirm the foundation's contact details, social links and donation bank details are current.
-- Some Ammaveedu news items are written in Malayalam and render with the browser's Malayalam system font; for a fully branded look, add a Malayalam webfont.
-- Review usage rights for the photographs before publishing publicly.
+## QA checklist
+- Build with `npm run build`
+- Check each page at mobile and desktop widths
+- Test keyboard navigation, gallery controls, and Escape key
+- Test successful and failed contact submissions on Vercel
+- Verify donation and contact details with the foundation
+- Run accessibility, SEO, and performance audits on the deployed preview
