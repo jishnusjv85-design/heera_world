@@ -1,6 +1,7 @@
 import React from 'react'
 import { RouterProvider, useRoute } from './router.jsx'
 import { Header, Footer } from './components/Layout.jsx'
+import WhatsAppButton from './components/WhatsAppButton.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Management from './pages/Management.jsx'
@@ -31,6 +32,7 @@ export default function App() {
       <Header />
       <main><Pages /></main>
       <Footer />
+      <WhatsAppButton />
     </RouterProvider>
   )
 }
