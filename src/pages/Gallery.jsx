@@ -8,8 +8,8 @@ export default function Gallery() {
     <>
       <section className="page-hero compact">
         <div className="container">
-          <div className="eyebrow hero-eyebrow"><span className="eyebrow-line" /> Moments & Milestones</div>
-          <h1>Gallery</h1>
+          <div className="eyebrow hero-eyebrow"><span className="eyebrow-line" /> Photos &amp; Memories</div>
+          <h1>Moments &amp; Milestones</h1>
         </div>
       </section>
       <section className="section-pad">
@@ -17,7 +17,7 @@ export default function Gallery() {
           <div className="gallery-grid">
             {GALLERY.map((src, i) => (
               <button className="gallery-item" key={i} onClick={() => setActive(src)}>
-                <img src={src} alt={`Gallery image ${i + 1}`} loading="lazy" />
+                <img src={src} alt={`Photo ${i + 1}`} loading="lazy" />
               </button>
             ))}
           </div>

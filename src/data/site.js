@@ -4,7 +4,7 @@ export const NAV = [
   { label: 'Home', to: '/' },
   { label: 'About Us', to: '/about-us' },
   { label: 'Meet The Team', to: '/management' },
-  { label: 'Gallery', to: '/gallery' },
+  { label: 'Moments & Milestones', to: '/gallery' },
   { label: 'Ammaveedu', to: '/ammaveedu' },
   { label: 'Contact Us', to: '/contact-us' },
   { label: 'Donations', to: '/donations' },
