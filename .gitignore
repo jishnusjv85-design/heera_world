@@ -26,3 +26,8 @@ pnpm-debug.log*
 !.vscode/extensions.json
 .idea
 *.local
+
+# local helpers
+scripts/
+.gh_*.log
+.gcm.log
