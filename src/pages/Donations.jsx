@@ -2,6 +2,12 @@ import React from 'react'
 import { Building2 } from 'lucide-react'
 import { DONATIONS } from '../data/site.js'
 
+const upiId = '8921811355@okbizaxis'
+const upiLink = 'upi://pay?pa=' + encodeURIComponent(upiId)
+  + '&pn=' + encodeURIComponent('Heera World Foundation')
+  + '&tn=' + encodeURIComponent('Building Hope: A Home for Pathumma')
+  + '&cu=INR'
+
 export default function Donations() {
   return (
     <>
@@ -10,6 +16,23 @@ export default function Donations() {
           <div className="eyebrow hero-eyebrow"><span className="eyebrow-line" /> Support Our Work</div>
           <h1>Donations</h1>
           <p>Your contribution brings food to a mother's table, care to her life, and hope for her tomorrow.</p>
+        </div>
+      </section>
+
+      <section className="section-pad" aria-labelledby="building-hope-title">
+        <div className="container">
+          <div className="bank-card">
+            <div className="eyebrow"><span className="eyebrow-line" /> Building Hope</div>
+            <h2 id="building-hope-title">A Home for Pathumma</h2>
+            <p>Support this housing campaign with a contribution of your choice.</p>
+            <p>Receiver: Heera World Foundation</p>
+            <p>UPI ID: {upiId}</p>
+            <a href={upiLink} style={{ display: 'inline-block', background: '#166534', color: '#fff', padding: '14px 24px', borderRadius: '8px', fontWeight: 700, textDecoration: 'none', margin: '16px 0' }}>
+              Donate Now via UPI
+            </a>
+            <p>Choose your amount and confirm the recipient in your UPI app before paying.</p>
+            <p>If your app does not open, try opening this page in your mobile browser, or use the existing QR code or bank details below.</p>
+          </div>
         </div>
       </section>
 
