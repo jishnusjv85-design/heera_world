@@ -110,6 +110,16 @@
     <button class="btn btn-primary" id="donateBtn" type="button">Donate Now · <span id="btnAmt">₹500</span></button>
     <button class="btn btn-ghost" id="copyBtnTop" type="button" style="margin-top:10px">📋 Copy UPI ID · 8921811355@okbizaxis</button>
     <p class="qrcap" style="text-align:center;margin-top:6px">Copied the ID? Open any UPI app → “Pay to UPI ID” → paste → enter amount.</p>
+    <div id="deskHelp" class="hidden" style="margin-top:12px;border:2px solid var(--gold);background:#fff8e6;border-radius:12px;padding:12px;font-size:15px;line-height:1.45">
+      <b>No UPI app opened on this device.</b><br>
+      UPI payments open in apps like Google Pay or PhonePe on your <b>phone</b>. Please either:
+      <ol style="margin:6px 0 0 18px;padding:0">
+        <li>Open this page on your phone and tap Donate Now, or</li>
+        <li>Scan the QR code below with your phone's UPI app, or</li>
+        <li>Tap “Copy UPI ID” and pay it from your UPI app.</li>
+      </ol>
+      <span lang="ml" style="display:block;margin-top:6px;color:var(--muted)">UPI ആപ്പ് തുറന്നില്ലെങ്കിൽ ഫോണിൽ ഈ പേജ് തുറക്കുക, അല്ലെങ്കിൽ താഴെയുള്ള QR കോഡ് സ്കാൻ ചെയ്യുക.</span>
+    </div>
     <div class="secure"><span aria-hidden="true">🔒</span> Paid inside your own UPI app. We never see your bank details.</div>
 
     <!-- Shown after tapping Donate: neutral, never claims success -->
@@ -196,7 +206,9 @@
   var isInstagram = /Instagram/i.test(ua);
   var isFacebook = /FBAN|FBAV|FB_IAB/i.test(ua);
   var inApp = isInstagram || isFacebook;
-  var isMobile = isIOS || isAndroid;
+  var coarse = false;
+  try { coarse = window.matchMedia && window.matchMedia("(pointer:coarse)").matches; } catch(e) {}
+  var isMobile = isIOS || isAndroid || /Mobi|Tablet|Silk|Kindle|Opera Mini/i.test(ua) || (coarse && (navigator.maxTouchPoints || 0) > 0);
 
   var selected = "500";
   var $ = function(id){ return document.getElementById(id); };
@@ -302,6 +314,7 @@
 
   function showAfterTap(){
     leftPage = false;
+    $("deskHelp").classList.add("hidden");
     $("afterTap").classList.remove("hidden");
     $("notOpened").classList.add("hidden");
     setTimeout(function(){
@@ -320,12 +333,19 @@
     if (isIOS) { openSheet(L, n); return; }
     if (isAndroid) {
       showAfterTap();
-      window.location.href = inApp ? L.androidChooser : L.upi;
+      window.location.href = L.androidChooser;
       return;
     }
-    // Desktop: UPI apps live on phones, so point to the QR code
-    $("qrCard").scrollIntoView({behavior:"smooth", block:"start"});
-    toast("Scan the QR code with your phone's UPI app");
+    // Unrecognised device (computer, or phone in "desktop site" mode):
+    // still try the UPI app; if nothing opens, show clear help on the page.
+    showAfterTap();
+    try { window.location.href = L.upi; } catch(e) {}
+    setTimeout(function(){
+      if (!leftPage) {
+        $("deskHelp").classList.remove("hidden");
+        $("deskHelp").scrollIntoView({behavior:"smooth", block:"center"});
+      }
+    }, 1500);
   });
 
   // iPhone app picker
