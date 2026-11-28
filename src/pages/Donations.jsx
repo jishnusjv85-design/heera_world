@@ -1,29 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Building2 } from 'lucide-react'
 import { DONATIONS } from '../data/site.js'
 
 const upiId = '8921811355@okbizaxis'
 const qrImage = '/media/heera-upi-qr.png'
+const upiLink = 'upi://pay?pa=8921811355@okbizaxis&pn=HEERA%20WORLD%20FOUNDATION'
+  + '&mc=8398&mode=04&purpose=00&tn=Donation&cu=INR'
 const btn = { display: 'inline-block', background: '#166534', color: '#fff', padding: '14px 24px', borderRadius: '8px', fontWeight: 700, textDecoration: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem', margin: '8px 8px 8px 0' }
 
 export default function Donations() {
-  const [copied, setCopied] = useState(false)
-
-  const copyUpi = async () => {
-    try {
-      await navigator.clipboard.writeText(upiId)
-    } catch {
-      const t = document.createElement('textarea')
-      t.value = upiId
-      document.body.appendChild(t)
-      t.select()
-      document.execCommand('copy')
-      document.body.removeChild(t)
-    }
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2500)
-  }
-
   return (
     <>
       <section className="page-hero compact">
@@ -42,22 +27,11 @@ export default function Donations() {
             <p>Support this housing campaign with a contribution of your choice.</p>
             <p>Receiver: Heera World Foundation</p>
             <p>UPI ID: {upiId}</p>
-            <img src={qrImage} alt="Heera World Foundation UPI QR code" width="240" height="240" style={{ display: 'block', width: '240px', maxWidth: '100%', height: 'auto', margin: '16px 0', background: '#fff', borderRadius: '8px' }} />
-            <div>
-              <button type="button" onClick={copyUpi} style={btn}>
-                {copied ? 'UPI ID Copied ✓' : 'Copy UPI ID'}
-              </button>
-              <a href={qrImage} download="heera-world-foundation-upi-qr.png" style={btn}>
-                Save QR Code
-              </a>
-            </div>
-            <p><strong>How to donate from your phone:</strong></p>
-            <ol style={{ paddingLeft: '20px', lineHeight: 1.7 }}>
-              <li>Tap <strong>Copy UPI ID</strong>, open GPay / PhonePe / Paytm, choose "Pay UPI ID" and paste it.</li>
-              <li>Or tap <strong>Save QR Code</strong>, open your UPI app's scanner and pick the image from your gallery.</li>
-              <li>Enter your amount (₹10, ₹100 or any amount) and confirm the receiver is Heera World Foundation.</li>
-            </ol>
-            <p>On a computer? Scan the QR code above with your phone's UPI app.</p>
+            <a href={upiLink} style={{ ...btn, fontSize: '1.1rem', padding: '16px 32px' }}>
+              Donate Now
+            </a>
+            <p style={{ marginTop: '24px' }}>On a computer? Scan this QR code with your phone's UPI app.</p>
+            <img src={qrImage} alt="Heera World Foundation UPI QR code" width="200" height="200" style={{ display: 'block', width: '200px', maxWidth: '100%', height: 'auto', margin: '8px 0', background: '#fff', borderRadius: '8px' }} />
           </div>
         </div>
       </section>
