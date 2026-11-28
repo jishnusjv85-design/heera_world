@@ -3,10 +3,8 @@ import { Building2 } from 'lucide-react'
 import { DONATIONS } from '../data/site.js'
 
 const upiId = '8921811355@okbizaxis'
-const upiLink = 'upi://pay?pa=' + encodeURIComponent(upiId)
-  + '&pn=' + encodeURIComponent('Heera World Foundation')
-  + '&tn=' + encodeURIComponent('Building Hope: A Home for Pathumma')
-  + '&cu=INR'
+const upiLink = 'upi://pay?pa=8921811355@okbizaxis&pn=HEERA%20WORLD%20FOUNDATION'
+  + '&mc=8398&aid=uGICAgOCGk5TCDA&ver=01&mode=01&tr=BCR2DN5TX243N3BX&cu=INR'
 
 export default function Donations() {
   return (
