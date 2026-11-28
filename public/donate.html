@@ -318,7 +318,7 @@
     $("afterTap").classList.remove("hidden");
     $("notOpened").classList.add("hidden");
     setTimeout(function(){
-      if (!leftPage) {
+      if (!document.hidden) {
         $("notOpened").classList.remove("hidden");
         $("appBox").classList.remove("hidden");
         if (inApp) $("inAppNote").classList.remove("hidden");
@@ -341,7 +341,7 @@
     showAfterTap();
     try { window.location.href = L.upi; } catch(e) {}
     setTimeout(function(){
-      if (!leftPage) {
+      if (!document.hidden) {
         $("deskHelp").classList.remove("hidden");
         $("deskHelp").scrollIntoView({behavior:"smooth", block:"center"});
       }
