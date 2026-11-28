@@ -108,6 +108,8 @@
     </div>
 
     <button class="btn btn-primary" id="donateBtn" type="button">Donate Now · <span id="btnAmt">₹500</span></button>
+    <button class="btn btn-ghost" id="copyBtnTop" type="button" style="margin-top:10px">📋 Copy UPI ID · 8921811355@okbizaxis</button>
+    <p class="qrcap" style="text-align:center;margin-top:6px">Copied the ID? Open any UPI app → “Pay to UPI ID” → paste → enter amount.</p>
     <div class="secure"><span aria-hidden="true">🔒</span> Paid inside your own UPI app. We never see your bank details.</div>
 
     <!-- Shown after tapping Donate: neutral, never claims success -->
@@ -347,7 +349,7 @@
   }
 
   // ---- copy UPI ID ----
-  $("copyBtn").addEventListener("click", function(){
+  function copyUpi(){
     var done = function(){ toast("UPI ID copied"); };
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(UPI_ID).then(done, fallbackCopy);
@@ -359,7 +361,9 @@
       try { document.execCommand("copy"); done(); } catch(e) { toast("Press and hold the UPI ID to copy"); }
       document.body.removeChild(t);
     }
-  });
+  }
+  $("copyBtn").addEventListener("click", copyUpi);
+  $("copyBtnTop").addEventListener("click", copyUpi);
 
   var tt;
   function toast(msg){
