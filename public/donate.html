@@ -320,7 +320,7 @@
     setTimeout(function(){
       if (!document.hidden) {
         $("notOpened").classList.remove("hidden");
-        $("appBox").classList.remove("hidden");
+        if (isMobile) $("appBox").classList.remove("hidden");
         if (inApp) $("inAppNote").classList.remove("hidden");
       }
     }, 2500);
